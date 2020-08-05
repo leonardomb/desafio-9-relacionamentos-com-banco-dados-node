@@ -1,0 +1,96 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+      "version": "1.0.0",
+      "title": "Desafio 09",
+      "description": "Relacionamentos com banco de dados node",
+      "license": {
+          "name": "MIT",
+          "url": "https://opensource.org/licenses/MIT"
+      }
+  },
+  "servers": [
+    {
+        "url": "/",
+        "description": "Desafio 09 - localhost"
+    }
+  ],
+  "tags": [
+    {
+        "name": "E-Commerce",
+        "description": "API / Essa será uma aplicação que deve permitir a criação de clientes, produtos e pedidos, onde o cliente pode gerar novos pedidos de compra de certos produtos, como um pequeno e-commerce."
+    }
+  ],
+  "consumes": [
+      "application/json"
+  ],
+  "produces": [
+      "application/json"
+  ],
+  "paths": {
+    "/customers": {
+        "post": {
+            "tags": [
+                "Customers"
+            ],
+            "summary": "A rota deve receber name e email dentro do corpo da requisição, sendo o name o nome do cliente a ser cadastrado. Ao cadastrar um novo cliente, ele deve ser armazenado dentro do seu banco de dados e deve ser retornado o cliente criado. Ao cadastrar no banco de dados, na tabela customers deverá possuir os campos name, email, created_at, updated_at.",
+            "requestBody": {
+                "description": "Customer Object",
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/definitions/Customers"
+                        }
+                    }
+                }
+            },
+            "produces": [
+                "application/json"
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "schema": {
+                        "$ref": "#/definitions/id"
+                    }
+                },
+                "400": {
+                    "description": "Failed. Bad post data."
+                }
+            }
+        }
+    }
+  },
+  "definitions": {
+    "id": {
+        "properties": {
+            "uuid": {
+                "type": "string"
+            }
+        }
+    },
+    "Customer": {
+        "type": "object",
+        "properties": {
+            "name": {
+                "type": "string"
+            },
+            "email": {
+                "type": "string"
+            }
+        }
+    },
+    "Customers": {
+        "type": "object",
+        "properties": {
+            "customers": {
+                "type": "object",
+                "additionalProperties": {
+                    "$ref": "#/definitions/Customer"
+                }
+            }
+        }
+    }
+  }
+}

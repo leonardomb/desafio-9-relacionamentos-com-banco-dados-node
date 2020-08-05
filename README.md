@@ -36,6 +36,13 @@ Para rodar os testes execute o comando yarn test
   <img src="./images/01-yarn-teste.png">
 </p>
 
+## Extra
+
+<h4>Add initial Swagger API documenteted</h4>
+<p align="center">
+  <img src="./images/02-swagger.png">
+</p>
+
 ## Licença
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
